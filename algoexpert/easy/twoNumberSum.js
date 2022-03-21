@@ -32,3 +32,18 @@ function twoNumberSum(array, targetSum) {
     }
     return [];
 }
+
+// similar solution to # 2 - involves just one for loop
+function twoNumberSum(array, targetSum) {
+    // Write your code here.
+      const map = {}; // key = x, value = y = targetSum - x
+      for (const x of array) {
+          const y = targetSum - x;
+          if (y in map) {
+              return [x, y]
+          } else {
+              map[x] = y;
+          }
+      }
+      return [];
+  }

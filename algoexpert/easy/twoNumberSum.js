@@ -36,13 +36,39 @@ function twoNumberSum(array, targetSum) {
 // similar solution to # 2 - involves just one for loop
 function twoNumberSum(array, targetSum) {
     // Write your code here.
-      const map = {}; // key = x, value = y = targetSum - x
-      for (const x of array) {
-          const y = targetSum - x;
-          if (y in map) {
-              return [x, y]
-          } else {
-              map[x] = y;
+    const map = {}; // key = x, value = y = targetSum - x
+    for (const x of array) {
+        const y = targetSum - x;
+        if (y in map) {
+            return [x, y]
+        } else {
+            map[x] = y;
+        }
+    }
+    return [];
+}
+
+
+// Solution 3 - Sort array first ascending, keep left and right pointers from start
+// and end of array and compare adding two to the sum
+// At each step, we're eliminating half input => while loop => O(log(n)) but
+// we're using array.sort() => O(nlog(n))
+// Time complexity = O(nlog(n))
+// Space complexity = O(n)
+function twoNumberSum(array, targetSum) {
+    // Write your code here.
+      // array.sort => O(nlog(n))
+      array.sort((a, b) => a - b); // sort ascending
+      let left = 0;
+      let right = array.length - 1;
+      while (left < right) {
+          const currSum = array[left] + array[right];
+          if (currSum === targetSum) {
+              return [array[left], array[right]];
+          } else if (currSum < targetSum) {
+              left++;
+          } else if (currSum > targetSum) {
+              right--;
           }
       }
       return [];

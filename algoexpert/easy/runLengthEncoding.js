@@ -5,7 +5,7 @@
  * Time - O(n), n = length of string
  * Space - O(n)
  */
-function runLengthEncoding(string) {
+ function runLengthEncoding(string) {
     // Write your code here.
       // create a result array
       // first count the number of the character until it reaches a different char
@@ -17,18 +17,20 @@ function runLengthEncoding(string) {
       const result = [];
       let count = 1;
       let char = string[0];
+
       for (let i = 1; i <= string.length; i++) {
           if (string[i] === char) {
               count++;
+
           } else { // push to result
-              if (count >= 10) {
-                  while (count >= 10) {
-                      count -= 9;
-                      result.push("9" + char);
-                  }
+              while (count >= 10) { // if count exceeds 9
+                  count -= 9;
+                  result.push("9" + char);
               }
+
               result.push(count.toString() + char);
 
+              // update char and count
               char = string[i];
               count = 1;
           }
@@ -36,6 +38,7 @@ function runLengthEncoding(string) {
 
       return result.join("");
   }
+
 
   // Do not edit the line below.
   exports.runLengthEncoding = runLengthEncoding;

@@ -131,6 +131,44 @@ const swap = (s, c1, c2) => {
     return stringArr.join("");
 }
 
+
+/**
+ *
+ * create an array of 26 (alphabet) filled with zeroes - each position is a letter
+ * if we come across, set the 0 to 1
+ *
+ */
+const getStringSolution = s => {
+
+
+    const foundLetters = new Array(26).fill(0);
+    for (let i = 0; i < s.lenght; i++) {
+        let currCharIdx = (s[i]).charCodeAt() - 'a'.charCodeAt();
+        foundLetters[currCharIdx] = 1;
+    }
+
+    const charMap = {};
+    let posCharIdx = 0;
+
+    let lexString = '';
+
+    for(let i = 0; i < s.length; i++) {
+        let char = s[i];
+        if (!charMap[char]) { // if we dont have this character in our string, find the smallest letter
+            while (foundLetters[posCharIdx] === 0) posCharIdx += 1;
+
+            charMap[char] = String.fromCharCode(posCharIdx + 'a'.charCodeAt());
+            posCharIdx += 1;
+
+        }
+
+        lexString += charMap[char];
+    }
+
+    return lexString;
+
+}
+
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 

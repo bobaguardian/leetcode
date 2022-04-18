@@ -66,6 +66,37 @@ function playlist(songs) {
     return pairCount;
 
 }
+
+
+// Time - O(n)
+// Space - O(n)
+const playlistSolution = songs => {
+    // map songs by mod 60
+    // ex: [40, 20, 60] => [40, 20, 0]
+    songs = songs.map(time => time % 60);
+
+    // hash counter to keep counter
+    const counter = {}; // {40: 1, 20: 1, 0: 1}
+
+    let pairs = 0; // keep track of the pair count
+
+    songs.forEach(song => {
+        const diff = (60 - song) % 60;
+        // look for the diff (pair)
+
+        if (counter[diff]) pairs += counter[diff];
+        if (!counter[song]) {
+            counter[song] = 0;
+        }
+
+        counter[song]++;
+    });
+
+    return pairs;
+
+}
+
+
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 

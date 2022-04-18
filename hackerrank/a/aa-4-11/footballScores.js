@@ -113,6 +113,7 @@ function counts(teamA, teamB) {
 const countsSolution = (teamA, teamB) => {
     // teamA = [1, 2, 3]
     // teamB = [2, 4]
+    // result = [2, 3]
 
     let result = [];
     teamA = teamA.sort((a, b) => a - b);

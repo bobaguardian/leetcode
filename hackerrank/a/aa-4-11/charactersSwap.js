@@ -135,14 +135,22 @@ const swap = (s, c1, c2) => {
 /**
  *
  * create an array of 26 (alphabet) filled with zeroes - each position is a letter
- * if we come across, set the 0 to 1
+ * if we come across the letter, set that position to 1
+ *
+ * then iterate through the string again,
+    * check if we've have not encountered that char (from the charMap)
+    * find the next smallest letter by using the foundLetters (stop when you see a 1), then add to
+    * the charMap[char] = that smallest letter
+    *
+    * if we have encountered that char (charMap[char]) - add its reference to the result string (charMap[char])
+ *
+ * Time O(n + m), m = length of foundLetters (which is 26 so it could be considered as constant)
+ * Space O(n)
  *
  */
 const getStringSolution = s => {
-
-
     const foundLetters = new Array(26).fill(0);
-    for (let i = 0; i < s.lenght; i++) {
+    for (let i = 0; i < s.length; i++) {
         let currCharIdx = (s[i]).charCodeAt() - 'a'.charCodeAt();
         foundLetters[currCharIdx] = 1;
     }

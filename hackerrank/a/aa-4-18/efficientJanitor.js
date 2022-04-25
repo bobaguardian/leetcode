@@ -92,6 +92,25 @@ function efficientJanitor(weight) {
 
 }
 
+/**
+ *
+ * Solution that's much more easy to follow wowow
+ */
+const efficientJanitorSolution = weights => {
+    weights = weights.sort((a, b) => (a - b));
+
+    let left = 0;
+    let right = weights.length - 1;
+    let count = 0;
+    while (left <= right) {
+        if (weights[left] + weights[right] <= 3) left++;
+        right++;
+        count++;
+    }
+
+    return count;
+}
+
 function main() {
     const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
 

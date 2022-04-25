@@ -90,8 +90,36 @@ function breakPalindrome(palindromeStr) {
 // time complexity - O(n) linear
 // space complexity of O(1) constant
 const isPalindrome = (s) => {
-    const midpoint = Math.floor((s.length - 1) / 2);
-    return s.startsWith(s.slice(midpoint + 1).split("").reverse().join(""));
+    // const midpoint = Math.floor((s.length - 1) / 2);
+    // return s.startsWith(s.slice(midpoint + 1).split("").reverse().join(""));
+    return string === string.split("").reverse().join("");
+}
+
+
+/**
+ *
+ * just want to change one letter => easiest to change it to an 'a' since its the first
+ * letter of the alphabet
+ *
+ *
+ * - use helper function to check if it is a palindrome
+ */
+const breakPalindromeSolution = str => {
+    // if it has a length of 1, it will always be a palindrome
+    if (str.length === 1) return "IMPOSSIBLE";
+
+    let firstNonA;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== 'a') {
+            if (!firstNonA) firstNonA = i;
+            const newString = str.slice(0, firstNonA) + 'a' + str.slice(firstNonA);
+            if (isPalindrome(newString)) continue;
+            return newString;
+        }
+
+    }
+
+    return "IMPOSSIBLE";
 }
 
 function main() {

@@ -43,12 +43,18 @@ function readLine() {
 
 */
 
-
+/**
+ *
+ *
+ */
 function maxProfit(costPerCut, salePrice, lengths) {
     // Write your code here
-    let maxProfit = Infinity;
+    // initialize maxProfit as -infinity
+    let maxProfit = -Infinity;
     const max = Math.max(...lengths);
 
+    // go from 1 up to max length and calculate the maxProfit for every single
+    // one of those cutLengths
     for (let i = 1; i <= max; i++) {
         maxProfit = calculate(i, salePrice, costPerCut, lengths, maxProfit);
     }
@@ -57,6 +63,12 @@ function maxProfit(costPerCut, salePrice, lengths) {
 
 }
 
+
+/**
+ *
+ * Helper function to calculate the max between the current max profit and the profit using
+ * a specified cutLength (using given formula)
+ */
 const calculate = (cutLength, costPerCut, lengths, maxProfits) => {
     let profit = 0;
 

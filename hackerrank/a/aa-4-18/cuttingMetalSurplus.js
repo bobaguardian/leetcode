@@ -46,7 +46,28 @@ function readLine() {
 
 function maxProfit(costPerCut, salePrice, lengths) {
     // Write your code here
+    let maxProfit = Infinity;
+    const max = Math.max(...lengths);
 
+    for (let i = 1; i <= max; i++) {
+        maxProfit = calculate(i, salePrice, costPerCut, lengths, maxProfit);
+    }
+
+    return maxProfit;
+
+}
+
+const calculate = (cutLength, costPerCut, lengths, maxProfits) => {
+    let profit = 0;
+
+    for (let length of lengths) {
+        let totalUniformRods = Math.floor(length / cutLength);
+        let totalCuts =  Math.ceil(length / cutLength) - 1;
+        let currProfit = totalUniformRods * cutLength * salePrice - (costPerCut + totalCuts);
+        if (currProfit > 0) profit += currProfit;
+    }
+
+    return Math.max(maxProfit, profit);
 }
 
 function main() {

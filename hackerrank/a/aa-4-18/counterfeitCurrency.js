@@ -47,8 +47,8 @@ function readLine() {
 
 function countCounterfeit(serialNumbers) {
     // Write your code here
-
-    const denominations = [10, 20, 50, 100, 200, 500, 1000];
+    // changed this to a set for constant lookup
+    const denominations = new Set([10, 20, 50, 100, 200, 500, 1000]);
     let totalCurrencyCount = 0;
     for(let num of serialNumbers) {
         if(!isWithinLength(num)) continue;

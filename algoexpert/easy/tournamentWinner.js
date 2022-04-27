@@ -48,5 +48,36 @@ function tournamentWinner(competitions, results) {
   return winner;
 }
 
+/**
+ *
+ * AlgoExperts Solution => code looks more cleaner
+ * - takeaways - don't forget about destructuring!
+ * - go for readability
+ * - use helper functions if you can to break it down and make it more readable
+ */
+
+function tournamentWinnerSolution2(competitions, results) {
+  // Write your code here.
+	const scores = {};
+	let max = 0;
+	let currentBestTeam = "";
+
+	for (let i = 0; i < results.length; i++) {
+		const result = results[i];
+		const [homeTeam, awayTeam] = competitions[i];
+
+		const winningTeam = (result === 0) ? awayTeam : homeTeam;
+		if (!(winningTeam in scores)) scores[winningTeam] = 3;
+		else scores[winningTeam] += 3;
+
+		if (scores[winningTeam] > max) {
+			max = scores[winningTeam];
+			currentBestTeam = winningTeam;
+		}
+	}
+
+  return currentBestTeam;
+}
+
 // Do not edit the line below.
 exports.tournamentWinner = tournamentWinner;

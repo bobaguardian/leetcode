@@ -70,6 +70,16 @@ function playlist(songs) {
 
 // Time - O(n)
 // Space - O(n)
+/**
+ *
+ * approach:
+ * - mod all songs by 60
+ * - keep a hash counter to keep track of how many occurances of a time there are
+ * - keep track of a pair count
+ * - for each song, check if there is the opposite value: 60 - current song, in the hash counter map
+ *   - if there is the opposite value, add to the pair count the occurrences of that opposite value
+ *   - then increment the number of occurences of the current song length
+ */
 const playlistSolution = songs => {
     // map songs by mod 60
     // ex: [40, 20, 60] => [40, 20, 0]

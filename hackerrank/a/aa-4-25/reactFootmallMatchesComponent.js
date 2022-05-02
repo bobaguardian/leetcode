@@ -23,13 +23,11 @@ export default class FootballMatchesData extends Component {
     if (year) {
       const response = await fetch(`https://jsonmock.hackerrank.com/api/football_competitions?year=${year}`);
       const data = await response.json();
-      // console.log(data);
 
       this.setState({
         selectedYear: year,
         data:data.data
       })
-      // console.log(this.state.data);
 
     }
   }

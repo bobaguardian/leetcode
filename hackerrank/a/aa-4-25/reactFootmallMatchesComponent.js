@@ -55,31 +55,25 @@ export default class FootballMatchesData extends Component {
             )
           })}
         </ul>
-
         <section className="content">
           {!this.state.selectedYear ? null : (
-
             <section>
               { this.state.selectedYear && this.state.data.length === 0 ?
               <div data-testid="no-result" className="slide-up-fade-in no-result">No Matches Found</div> : (
                 <React.Fragment>
                   <div className="total-matches" data-testid="total-matches">Total matches: {this.state.data.length}</div>
                   <ul className="mr-20 matches styled" data-testid="match-list">
-                    {this.state.data.map((ele, idx) => {
+                    {this.state.data.map((match, idx) => {
                       return (
 
-                        <li key={`match-${idx}`} className="slide-up-fade-in">Match {ele.name} won by {ele.winner}</li>
+                        <li key={`match-${idx}`} className="slide-up-fade-in">Match {match.name} won by {match.winner}</li>
                       )
                     })}
                   </ul>
                 </React.Fragment>
               )}
-
-
             </section>
           )}
-
-
         </section>
       </div>
     );

@@ -43,5 +43,33 @@ const removeRepeatingChars = (frequencyCount) => {
 	}
 }
 
+function firstNonRepeatingCharacter2(string) {
+  // Write your code here.
+	/**
+	first non repeating character is the first character that occurs only once
+	abcdcaf => b (not d or f)
+	approach:
+	keep an hash map to keep track of frequency count {}
+	iterate through string
+	- if char is not in map, add it, value = 1
+	- if char is in array increment value
+	{ a: 2, b: 1, c: 2, d: 1, f: 1}
+	iterate through string again and check if frequencyCount is 1 return it
+
+	O(n) time, O(1) space since largest size of hash table wwill be 26 - alphabet
+	*/
+
+	const frequencyCount = getFrequencyMap(string);
+
+	for (let i = 0; i < string.length; i++) {
+		if (frequencyCount[string[i]] === 1) {
+			return i;
+		}
+	}
+
+	return -1;
+}
+
+
 // Do not edit the line below.
 exports.firstNonRepeatingCharacter = firstNonRepeatingCharacter;

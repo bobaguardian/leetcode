@@ -20,5 +20,42 @@ function findThreeLargestNumbers(array) {
 	return result;
 }
 
+function findThreeLargestNumbers2(array) {
+  // Write your code here.
+	// create result arr = [null, null, null]
+	// traverse through arr
+	// compare the num with each number in result arr and shift if necessary
+	// ex: compare 141 with null => replace arr[0] = 141
+	// compare 1 with arr[2] replace arr[2] 1 and shift if necessary
+
+	const result = [null, null, null]
+	for (const num of array) {
+		updateLargest(result, num);
+	}
+
+	return result;
+}
+// [18, 141, 541]
+const updateLargest = (result, num) => {
+	if (!result[2] || num > result[2]) {
+		shiftSort(result, num, 2);
+	} else if (!result[1] || num > result[1]) {
+		shiftSort(result, num, 1);
+	} else if (!result[0] || num > result[0]) {
+		shiftSort(result, num, 0);
+	}
+
+}
+
+const shiftSort = (array, num, idx) => {
+	for (let i = 0; i <= idx; i++) {
+		if (i === idx) { // if at the index, update num
+			array[i] = num;
+		} else { // else shift over to left
+			array[i] = array[i + 1]
+		}
+	}
+}
+
 // Do not edit the line below.
 exports.findThreeLargestNumbers = findThreeLargestNumbers;

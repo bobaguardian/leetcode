@@ -54,6 +54,11 @@ function readLine() {
  *
  * Time complexity depends on the difference in min and max numbers in the given array - worst case => large range
  * best case - they're all equal already
+ *
+ *
+ * patterns i see:
+ * - sum up the counts of difference between each ele and the max => iteration count is that total - 1
+ * - nope this pattern approach doesnt work
  */
 
 function countMoves(numbers) {
@@ -67,6 +72,15 @@ function countMoves(numbers) {
         incrementAllButOne(numbers, maxEleIdx);
         iterationCount++;
     }
+
+    // approach 2 from pattern:
+    // const maxEle = Math.max(...numbers);
+    // let total = 0;
+    // for (let i = 0; i < numbers.length; i++) {
+    //     total += maxEle - numbers[i];
+    // }
+
+    // return total - 1;
 
     return iterationCount;
 

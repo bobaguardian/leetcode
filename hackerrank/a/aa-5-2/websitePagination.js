@@ -46,7 +46,7 @@ function readLine() {
  *   - push to result the item string
  * - return result array
  *
- *
+ * SOLVED
  * time O(nlog(n)) - sort items
  * space O(m) where m is the number of items per page - result array size
  */

@@ -52,6 +52,8 @@ function readLine() {
  *   - if currPos = endPos return currmoveCt
  *   - call generateNextValidPositions and add the nonvisited ones to the queue w/ currMoveCt + 1
  *
+ * UNSOLVED
+ * passes some tests, but not all => time exceeded limit
  *
  */
 

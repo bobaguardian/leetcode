@@ -55,7 +55,8 @@ function readLine() {
  * Time complexity depends on the difference in min and max numbers in the given array - worst case => large range
  * best case - they're all equal already
  *
- *
+ * UNSOLVED
+ * Only passes some tests => time complexity is too large?
  * patterns i see:
  * - sum up the counts of difference between each ele and the max => iteration count is that total - 1
  * - nope this pattern approach doesnt work

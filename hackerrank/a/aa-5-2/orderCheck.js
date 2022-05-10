@@ -40,7 +40,7 @@ function readLine() {
  * - compare each index of the sorted with the original height array
  * - if they're not equal, increment numStudents
  *
- *
+ * SOLVED
  * Time O(n) - where n is the number of students
  * Space O(n) - where n is the number of students (keep a sorted array of the heights)
  */
